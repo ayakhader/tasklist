@@ -10,8 +10,10 @@
     </head>
 
     <body>
+    <ul>
         @foreach($tasks as $task)
-       <h3>{{$task->name}}</h3>
+       <li><a href="/task/{{$task->id}}">{{$task->name}}</a></li>
         @endforeach
+     </ul>
     </body>
 </html>

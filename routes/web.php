@@ -12,7 +12,8 @@
 */
 
 Route::get('/', function () {
-    $tasks = DB::table('tasks')->get();
-
-    return view('welcome',compact('tasks'));
+    return view('child');
 });
+
+Route::get('tasks','Taskcontroller@index');
+Route::get('task/{id}','Taskcontroller@show');
