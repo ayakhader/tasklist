@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('titel','Task List')
+
    @section('content')
 
            <div class="col-sm-offset-2 col-sm-8">
@@ -33,6 +34,7 @@
                     </form>
                 </div>
             </div>
+            
 
             <!-- Current Tasks -->
                 <div class="panel panel-default">
@@ -53,13 +55,26 @@
 
                                         <!-- Task Delete Button -->
                                         <td>
-                                            <form action="#" method="POST">
+                                            <form action="delete/{{$task->id}}" method="POST">
+                                             @csrf
+                                             @method('delete')
                                                 <button type="submit" class="btn btn-danger">
-                                                    <i class="fa fa-btn fa-trash"></i>Delete
+                                                    <i ></i>Delete
+                                                </button>
+                                            </form>
+                                        </td>
+                                        
+                                        <!-- Task update Button -->
+                                        <td>
+                                            <form action="{{url('update/'.$task->id)}}" method="POST">
+                                                @csrf
+                                                <button type="submit" class="btn btn-primary">
+                                                    <i></i>Edite
                                                 </button>
                                             </form>
                                         </td>
                                     </tr>
+                                     
                                   
                             @endforeach
                                   
