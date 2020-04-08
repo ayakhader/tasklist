@@ -8,6 +8,23 @@
             New Task
         </div>
 
+        {{------ @if(isset($user))
+        {{ Form::model($user, ['route' => ['user.update', $user->id], 
+        'method' => 'PUT']) }}
+
+    @else
+
+        {{ Form::open(['route' => 'user.store',
+         'method' => 'POST']) }}
+
+    @endif
+
+    {{ Form::close() }}
+
+ ------}}
+
+
+
         <div class="panel-body">
             <!-- New Task Form -->
             
@@ -81,6 +98,8 @@
                                <td>
                                 <form action="edit/{{$task->id}}" method="POST">
                                          @csrf
+                                         @method('put')
+
                                         <button type="submit" class="btn btn-primary">
                                              <i></i> Edit
                                         </button>

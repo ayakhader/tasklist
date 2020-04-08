@@ -10,8 +10,11 @@
 
         <div class="panel-body">
             <!-- New Task Form -->
+           
             <form action="{{url('update/'.$task_edit->id)}}" method="POST" class="form-horizontal">        
                 @csrf
+                @method('PATCH')
+
                 <!-- Task Name -->
                 <div class="form-group">
                     <label for="task-name" class="col-sm-3 control-label">Task</label>
@@ -70,7 +73,7 @@
                                <td>
                                 <form action="{{url('edit/'.$task->id)}}" method="POST">
                                          @csrf
-                                         @method('update')
+                                         
                                         <button type="submit" class="btn btn-primary">
                                              <i></i> Edit
                                         </button>
