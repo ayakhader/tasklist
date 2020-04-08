@@ -11,6 +11,7 @@
         <div class="panel-body">
             <!-- New Task Form -->
            
+           
             <form action="{{url('update/'.$task_edit->id)}}" method="POST" class="form-horizontal">        
                 @csrf
                 @method('PATCH')

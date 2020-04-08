@@ -8,6 +8,7 @@
             New Task
         </div>
 
+
         {{------ @if(isset($user))
         {{ Form::model($user, ['route' => ['user.update', $user->id], 
         'method' => 'PUT']) }}
