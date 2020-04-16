@@ -1,94 +1,53 @@
-@extends('layouts.app')
-@section('title', 'Task List')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('content')
-<div class="col-sm-offset-2 col-sm-8">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            New Task
-        </div>
+<head>
 
-        <div class="panel-body">
-            <!-- New Task Form -->
-           
-           
-            <form action="{{url('update/'.$task_edit->id)}}" method="POST" class="form-horizontal">        
-                @csrf
-                @method('PATCH')
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>CRUD App - Midterm Exam</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
-                <!-- Task Name -->
-                <div class="form-group">
-                    <label for="task-name" class="col-sm-3 control-label">Task</label>
+</head>
 
-                    <div class="col-sm-6">
-                        <input type="text" name="name" id="task-name" class="form-control" value={{$task_edit->name}}>
-                    </div>
+<body>
+    <div class="container">
+        <h1>CRUD app</h1>
+        <div class="card">
+
+            <div class="card-header"><i class="fa fa-fw fa-plus-circle"></i>
+                <strong>Add User</strong>
+                <a href="index.html" class="float-right btn btn-dark btn-sm"><i class="fa fa-fw fa-globe"></i> Browse Users</a>
+            </div>
+
+            <div class="card-body">
+                <div class="col-sm-6">
+                    <h5 class="card-title">Fields with <span class="text-danger">*</span> are mandatory!</h5>
+                    <form method="post">
+                        <div class="form-group">
+                            <label>User Name <span class="text-danger">*</span></label>
+                            <input type="text" name="username" id="username" class="form-control" placeholder="Enter user name" required="">
+                        </div>
+
+                        <div class="form-group">
+                            <label>User Email <span class="text-danger">*</span></label>
+                            <input type="email" name="useremail" id="useremail" class="form-control" placeholder="Enter user email" required="">
+                        </div>
+
+                        <div class="form-group">
+                            <label>User Phone <span class="text-danger">*</span></label>
+                            <input type="tel" pattern=".{14,14}" title="Accept US Number format (888) 888-8888" class="tel form-control" name="userphone" id="userphone" x-autocompletetype="tel" placeholder="Enter user phone" required="">
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" name="submit" value="submit" id="submit" class="btn btn-primary"><i class="fa fa-fw fa-plus-circle"></i> Add User</button>
+                        </div>
+                    </form>
                 </div>
-
-                <!-- Update Task Button -->
-                <div class="form-group">
-                    <div class="col-sm-offset-3 col-sm-6">
-                        <button type="submit" class="btn btn-default">
-                            <i></i> Update Task
-                        </button>
-                    </div>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
+</body>
 
-    <!-- Current Tasks -->
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                Current Tasks
-            </div>
-
-            <div class="panel-body">
-                <table class="table table-striped task-table">
-                    <thead>
-                        <th>Task</th>
-                        <th>&nbsp;</th>
-                    </thead>
-                    <tbody>
-
-                        @foreach ($tasks as $task)
-
-                            <tr>
-                               <td class="table-text">
-                                   <div>{{$task->name}}</div>
-                               </td>
-
-                               <!-- Task Delete Button --> 
-                               <td>
-                               <form action="{{url('delete/'.$task->id)}}" method="POST">
-                                        @csrf
-                                        @method('delete')
-                                       <button type="submit" class="btn btn-danger">
-                                            <i></i>Delete
-                                       </button>
-                                 </form>
-
-                               </td>
-                               
-                               <!-- Task Update Button -->
-                               <td>
-                                <form action="{{url('edit/'.$task->id)}}" method="POST">
-                                         @csrf
-                                         
-                                        <button type="submit" class="btn btn-primary">
-                                             <i></i> Edit
-                                        </button>
-                                  </form>
-                                  
-                                </td>
-                            </tr>
-                      
-                        @endforeach
-                            
-                    </tbody>
-                </table>
-            </div>
-        </div>
-</div>
-    
-@endsection
+</html>
